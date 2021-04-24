@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +23,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-// Route::get('/greet', 'UserController@greet');
-
-Route::get('/greet',  [UserController::class, 'greet']);
+Route::get('/greet', [ApiController::class,'greet']);
