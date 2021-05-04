@@ -15,6 +15,7 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    @livewire('part.nav.nav-top-items')
                 </div>
             </div>
 
@@ -144,6 +145,7 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            @livewire('part.nav.nav-top-items',['navs_top'=> [],'responsive'=>true])
         </div>
 
         <!-- Responsive Settings Options -->
