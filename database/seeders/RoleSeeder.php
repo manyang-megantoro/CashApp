@@ -15,12 +15,14 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $r1 = Role::firstOrCreate(["name" => "Superadmin"]);
-        $r2 = Role::firstOrCreate(["name" => "Admin"]);
-        $r3 = Role::firstOrCreate(["name" => "User"]);
+        $r0 = Role::firstOrCreate(["name" => "Admin"]);
+        $r1 = Role::firstOrCreate(["name" => "Owner"]);
+        $r2 = Role::firstOrCreate(["name" => "Manager"]);
+        $r3 = Role::firstOrCreate(["name" => "Cashier"]);
+        $r4 = Role::firstOrCreate(["name" => "User"]);
 
         $p1 = Permission::firstOrCreate(['name' => 'manage users']);
 
-        $r1->givePermissionTo('manage users');
+        $r0->givePermissionTo('manage users');
     }
 }

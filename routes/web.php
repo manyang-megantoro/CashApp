@@ -15,12 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::impersonate();
 
-Route::get('/', function () {
-    return view('welcome');
+Route::redirect('/', '/login');
+
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+    Route::group(['middleware' => ['role:Admin']], function () {
+    });
+
+    Route::get('/dashboard', '\App\Http\Controllers\Dashboard\DashboardController@index')->name('dashboard');
+    Route::redirect('/', '/dashboard');
+
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 Route::get('/greet', [ApiController::class,'greet']);
